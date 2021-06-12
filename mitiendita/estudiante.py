@@ -21,20 +21,20 @@ def index():
 def get_estudiante_by_Nombre(nombre):
     db, cur = get_connection()
     print(nombre)
-    cur.execute('select * from estudiante where nombres ='+"'"+nombre+"'")
+    cur.execute('select * from alumno where nombre ='+"'"+nombre+"'")
     print(cur)
     return cur.fetchall()
 
 def get_estudiante_by_NombreSeguro(nombre):
     db, cur = get_connection()
     print(nombre)
-    cur.execute('prepare myplan as select * from estudiante where nombres like $1;')
+    cur.execute('prepare myplan as select * from alumno where nombre like $1;')
     cur.execute('execute myplan (%s)', (nombre,))
     return cur.fetchall()
 
 def get_estudiante_All():
     conn, cur = get_connection()
-    cur.execute('select * from estudiante')
+    cur.execute('select * from tienda.alumno')
     return cur.fetchall()
 
 
